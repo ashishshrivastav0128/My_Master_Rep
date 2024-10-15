@@ -5,7 +5,7 @@
  */
 public class AssociatedServiceLocationsController {
 	
-    static User currentUser;
+    static User currentUser; 
     static{
         currentUser =  [SELECT Profile.Name, ContactId, Contact.Id, AccountId, Account.PID__c FROM User WHERE Id =: UserInfo.getUserId() LIMIT 1];
     }
@@ -13,7 +13,7 @@ public class AssociatedServiceLocationsController {
     @AuraEnabled
     public static List<RequestingProviderWrapper> getRequestingProvider(){
         List<Service_Location__c> serviceLocationList = getServiceLocation();
-        return fillRequestingProvider(serviceLocationList);
+        return fillRequestingProvider(serviceLocationList); 
     }
     
     private static List<RequestingProviderWrapper> fillRequestingProvider(List<Service_Location__c> serviceLocationList){
@@ -120,6 +120,9 @@ public class AssociatedServiceLocationsController {
         return serviceLocationList;
     }
     
+    public static void main(){
+        
+    }
     
     public class RequestingProviderWrapper{
         @AuraEnabled public String label;
